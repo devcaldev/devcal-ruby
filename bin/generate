@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+wget https://raw.githubusercontent.com/devcaldev/proto/refs/heads/main/devcal.proto
+
+grpc_tools_ruby_protoc --ruby_out=./lib/devcal --grpc_out=./lib/devcal devcal.proto
+
+rm devcal.proto
