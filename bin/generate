@@ -5,3 +5,7 @@ wget https://raw.githubusercontent.com/devcaldev/proto/refs/heads/main/devcal.pr
 grpc_tools_ruby_protoc --ruby_out=./lib/devcal --grpc_out=./lib/devcal devcal.proto
 
 rm devcal.proto
+
+sed -i -e "s/require 'devcal_pb'/require_relative 'devcal_pb'/g" lib/devcal/devcal_services_pb.rb
+
+rm lib/devcal/devcal_services_pb.rb-e
