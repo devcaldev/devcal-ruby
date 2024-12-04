@@ -26,6 +26,9 @@ class TestDevcal < Minitest::Test
 
     @client.update_event(ID: retrived_event.ID, Props: '{"calendar_id":"c2"}')
 
+    found_events = @client.find_events(Props: '{"calendar_id":"c2"}')
+    assert found_events.to_a.length > 0
+
     updated_event = @client.get_event(ID: retrived_event.ID)
     assert updated_event.Props == '{"calendar_id": "c2"}'
 

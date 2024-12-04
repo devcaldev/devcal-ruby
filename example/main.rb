@@ -21,6 +21,11 @@ end
 
 client.update_event(ID: retrived_event.ID, Props: '{"calendar_id":"c2"}')
 
+found_events = client.find_events(Props: '{"calendar_id":"c2"}')
+found_events.each do |le|
+  pp ['found_events', le]
+end
+
 updated_event = client.get_event(ID: retrived_event.ID)
 pp ['updated_event', updated_event]
 

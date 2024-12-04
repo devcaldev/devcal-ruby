@@ -24,6 +24,10 @@ module Devcal
       @stub.list_events(::Devcal::ListEventsParams.new(params), metadata: @metadata)
     end
 
+    def find_events(**params)
+      @stub.find_events(::Devcal::FindEventsParams.new(params), metadata: @metadata)
+    end
+
     def update_event(**params)
       @stub.update_event(::Devcal::UpdateEventParams.new(params), metadata: @metadata)
     end
@@ -49,6 +53,10 @@ module Devcal
 
     def list_events(**params)
       @stub.list_events(::Devcal::ListEventsParams.new(params), credentials: @call_creds)
+    end
+
+    def find_events(**params)
+      @stub.find_events(::Devcal::FindEventsParams.new(params), credentials: @call_creds)
     end
 
     def update_event(**params)
