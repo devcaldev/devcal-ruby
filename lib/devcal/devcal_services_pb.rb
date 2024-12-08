@@ -17,7 +17,6 @@ module Devcal
       rpc :InsertEvent, ::Devcal::InsertEventParams, ::Devcal::Event
       rpc :GetEvent, ::Devcal::GetEventParams, ::Devcal::Event
       rpc :ListEvents, ::Devcal::ListEventsParams, stream(::Devcal::Event)
-      rpc :FindEvents, ::Devcal::FindEventsParams, stream(::Devcal::Event)
       rpc :UpdateEvent, ::Devcal::UpdateEventParams, ::Google::Protobuf::Empty
       rpc :DeleteEvent, ::Devcal::DeleteEventParams, ::Google::Protobuf::Empty
     end
