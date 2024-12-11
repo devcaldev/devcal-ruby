@@ -14,7 +14,7 @@ pp ['new_event',new_event]
 retrived_event = client.get_event(ID: new_event.ID)
 pp ['retrived_event',retrived_event]
 
-listed_events = client.list_events(Range: {Date: Time.now.to_s, Period: 'year'})
+listed_events = client.list_events(Range: {Date: Time.now, Period: 'year'})
 listed_events.each do |le|
   pp ['listed_event', le]
 end
