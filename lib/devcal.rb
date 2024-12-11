@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'google/protobuf/well_known_types'
 require_relative "devcal/version"
 require_relative "devcal/devcal_services_pb"
 
