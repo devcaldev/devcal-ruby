@@ -7,7 +7,7 @@ api_key = ARGV[0]
 
 client = Devcal.new_with_credentials(addr, api_key)
 
-new_event = client.insert_event(Dtstart: Time.now, Dtend: (Time.now + 3600), Rrule: 'FREQ=DAILY', Props: Google::Protobuf::Struct.from_hash({"calendar_id" => "c1"}))
+new_event = client.insert_event(Dtstart: Time.now, Dtend: (Time.now + 3600), Rrule: 'FREQ=DAILY', Props: {"calendar_id" => "c1"})
 pp ['new_event',new_event]
 
 
@@ -19,9 +19,9 @@ listed_events.each do |le|
   pp ['listed_event', le]
 end
 
-client.update_event(ID: retrived_event.ID, Props: Google::Protobuf::Struct.from_hash({"calendar_id" => "c2"}))
+client.update_event(ID: retrived_event.ID, Props: {"calendar_id" => "c2"})
 
-found_events = client.list_events(Props: Google::Protobuf::Struct.from_hash({"calendar_id" => "c2"}))
+found_events = client.list_events(Props: {"calendar_id" => "c2"})
 found_events.each do |le|
   pp ['found_events', le]
 end
