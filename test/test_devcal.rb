@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+# NOTE: local devcal server must be running and db/sql/seed.sql executed
+
 require "test_helper"
 
 class TestDevcal < Minitest::Test
   def setup
     @addr = 'localhost:50051'
-    @api_key = 'Gtr4D2lXzMy+oVS2Y2rrWyiDQ81tWM/cpD5EwvA9VJJtA7E1Tx1HnT1Moqbt36DYEcivCHDbeJi6GxhnPMuNxw=='
+    @api_key = '9fSBhI9PysfJpAdvdo7QO50J6lWunEvSi4TP0Uv3GbcXjyYi7DrZO4aNDCC+cYtTsEi5ZKyArajVml4nZlSEVg=='
     @client = Devcal.new_with_insecure_credentials(@addr, @api_key)
   end
 
