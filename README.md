@@ -20,7 +20,7 @@ To use Devcal in your Ruby application, first require the gem:
 require 'devcal'
 ```
 
-Here's a simple example of how to use
+see `test` and `example` folders for detailed usage.
 
 ## Development
 
