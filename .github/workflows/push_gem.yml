@@ -11,16 +11,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Push gem to RubyGems.org
-    strategy:
-      matrix:
-        ruby:
-          - '3.2.2'
+
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: write # IMPORTANT: this permission is required for `rake release` to push the release tag
 
     steps:
+    # Set up
     - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby }}
+        ruby-version: ruby
         bundler-cache: true
+    # Release
     - uses: rubygems/release-gem@v1
