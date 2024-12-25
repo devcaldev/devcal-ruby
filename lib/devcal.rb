@@ -16,7 +16,7 @@ module Devcal
     # @param params [Hash] The parameters for the event, including optional :Props.
     # @return [Object] The response from the insert_event call.
     def insert_event(**params)
-      params[:Props] = Google::Protobuf::Struct.from_hash(params[:Props]) if params[:Props]
+      params[:props] = Google::Protobuf::Struct.from_hash(params[:props]) if params[:props]
       @stub.insert_event(::Devcal::InsertEventParams.new(params), **@call_opts)
     end
 
@@ -33,8 +33,10 @@ module Devcal
     # @param params [Hash] The parameters for listing events, including optional :Props.
     # @return [Object] The response from the list_events call.
     def list_events(**params)
-      params[:Props] = Google::Protobuf::Struct.from_hash(params[:Props]) if params[:Props]
-      @stub.list_events(::Devcal::ListEventsParams.new(params), **@call_opts)
+      list_event_params = {}
+      list_event_params[:range] = ::Devcal::ListEventsRange.new(date: params[:date], period: params[:period]) if params[:date] && params[:period]
+      list_event_params[:props] = Google::Protobuf::Struct.from_hash(params[:props]) if params[:props]
+      @stub.list_events(::Devcal::ListEventsParams.new(list_event_params), **@call_opts)
     end
 
     # Updates an event in the Devcal service.
@@ -42,7 +44,7 @@ module Devcal
     # @param params [Hash] The parameters for updating the event, including optional :Props.
     # @return [Object] The response from the update_event call.
     def update_event(**params)
-      params[:Props] = Google::Protobuf::Struct.from_hash(params[:Props]) if params[:Props]
+      params[:props] = Google::Protobuf::Struct.from_hash(params[:props]) if params[:props]
       @stub.update_event(::Devcal::UpdateEventParams.new(params), **@call_opts)
     end
 
